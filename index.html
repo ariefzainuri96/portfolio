@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Arief Zainuri - Portfolio</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                        },
+                        colors: {
+                            slate: {
+                                850: '#1e293b',
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+            .dark ::-webkit-scrollbar-thumb {
+                background: #334155;
+            }
+            .dark ::-webkit-scrollbar-track {
+                background: #0f172a;
+            }
+
+            .fade-in {
+                animation: fadeIn 0.4s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Toggle Switch Transition Classes */
+            .toggle-checkbox:checked {
+                right: 0;
+                border-color: #687280;
+            }
+            .toggle-checkbox:checked + .toggle-label {
+                background-color: #687280;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-300 font-sans antialiased"
+    >
+        <nav
+            class="fixed w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex-shrink-0">
+                        <span
+                            class="text-xl font-bold text-slate-900 dark:text-white tracking-wider"
+                            >ARIEF<span
+                                class="text-indigo-600 dark:text-indigo-500"
+                                >.DEV</span
+                            ></span
+                        >
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-8">
+                        <div class="flex space-x-6 text-sm font-medium">
+                            <a
+                                href="#home"
+                                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                data-i18n="nav.home"
+                                >Home</a
+                            >
+                            <a
+                                href="#skills"
+                                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                data-i18n="nav.skills"
+                                >Skills</a
+                            >
+                            <a
+                                href="#projects"
+                                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                data-i18n="nav.projects"
+                                >Projects</a
+                            >
+                            <a
+                                href="#contact"
+                                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                data-i18n="nav.contact"
+                                >Contact</a
+                            >
+                        </div>
+
+                        <div
+                            class="h-6 w-px bg-slate-300 dark:bg-slate-700 mx-2"
+                        ></div>
+
+                        <div class="flex items-center gap-4">
+                            <button
+                                onclick="toggleLanguage()"
+                                class="relative flex items-center justify-between gap-2 w-14 h-7 bg-slate-200 dark:bg-slate-700 rounded-full py-1 px-1.5 transition-colors duration-300 focus:outline-none shadow-inner"
+                            >
+                                <span class="text-xs font-bold text-slate-400"
+                                    >EN</span
+                                >
+
+                                <span class="text-xs font-bold text-slate-400"
+                                    >ID</span
+                                >
+
+                                <div
+                                    id="lang-thumb-desktop"
+                                    class="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 translate-x-0 dark:translate-x-7 z-10 flex items-center justify-center"
+                                ></div>
+                            </button>
+
+                            <button
+                                onclick="toggleTheme()"
+                                class="relative w-14 h-7 bg-slate-200 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300 focus:outline-none flex items-center justify-between px-1.5 shadow-inner"
+                            >
+                                <i
+                                    class="fas fa-sun text-[10px] text-yellow-500 z-0"
+                                ></i>
+                                <i
+                                    class="fas fa-moon text-[10px] text-indigo-300 z-0"
+                                ></i>
+
+                                <div
+                                    id="theme-thumb-desktop"
+                                    class="absolute top-1 left-1 w-5 h-5 bg-white dark:bg-slate-800 rounded-full shadow-md transform transition-transform duration-300 translate-x-0 dark:translate-x-7 z-10 flex items-center justify-center"
+                                ></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 md:hidden">
+                        <button
+                            type="button"
+                            onclick="toggleMobileMenu()"
+                            class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 focus:outline-none transition-colors"
+                        >
+                            <i
+                                id="mobile-menu-icon"
+                                class="fas fa-bars text-xl transition-transform duration-300"
+                            ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="md:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0"
+                id="mobile-menu"
+            >
+                <div class="px-4 pt-4 pb-6 space-y-4">
+                    <a
+                        href="#home"
+                        class="block text-slate-700 dark:text-white font-medium text-lg"
+                        onclick="toggleMobileMenu()"
+                        data-i18n="nav.home"
+                        >Home</a
+                    >
+                    <a
+                        href="#skills"
+                        class="block text-slate-600 dark:text-slate-300 font-medium text-lg"
+                        onclick="toggleMobileMenu()"
+                        data-i18n="nav.skills"
+                        >Skills</a
+                    >
+                    <a
+                        href="#projects"
+                        class="block text-slate-600 dark:text-slate-300 font-medium text-lg"
+                        onclick="toggleMobileMenu()"
+                        data-i18n="nav.projects"
+                        >Projects</a
+                    >
+
+                    <hr class="border-slate-200 dark:border-slate-700 my-2" />
+
+                    <div class="flex justify-between items-center pt-2">
+                        <span
+                            class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                            >Language</span
+                        >
+
+                        <button
+                            onclick="toggleLanguage()"
+                            class="relative justify-between flex items-center gap-2 w-14 h-7 bg-slate-200 dark:bg-slate-700 rounded-full py-1 px-1.5 transition-colors duration-300 focus:outline-none shadow-inner"
+                        >
+                            <span class="text-xs font-bold text-slate-400"
+                                >EN</span
+                            >
+
+                            <span class="text-xs font-bold text-slate-400"
+                                >ID</span
+                            >
+
+                            <div
+                                id="lang-thumb-mobile"
+                                class="absolute top-1 left-1 w-4 h-4 bg-indigo-600 rounded-full shadow-md transform transition-transform duration-300 translate-x-0"
+                            ></div>
+                        </button>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span
+                            class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                            >Appearance</span
+                        >
+                        <button
+                            onclick="toggleTheme()"
+                            class="relative w-14 h-7 bg-slate-200 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300 focus:outline-none flex items-center justify-between px-1.5 shadow-inner"
+                        >
+                            <i
+                                class="fas fa-sun text-[10px] text-yellow-500"
+                            ></i>
+                            <i
+                                class="fas fa-moon text-[10px] text-indigo-300"
+                            ></i>
+                            <div
+                                id="theme-thumb-mobile"
+                                class="absolute top-1 left-1 w-5 h-5 bg-white dark:bg-slate-800 rounded-full shadow-md transform transition-transform duration-300 translate-x-0 dark:translate-x-7 z-10"
+                            ></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div
+                class="hidden md:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-xl"
+                id="mobile-menu"
+            >
+                <div class="px-4 pt-4 pb-6 space-y-4">
+                    <a
+                        href="#home"
+                        class="block text-slate-700 dark:text-white font-medium text-lg"
+                        data-i18n="nav.home"
+                        >Home</a
+                    >
+                    <a
+                        href="#skills"
+                        class="block text-slate-600 dark:text-slate-300 font-medium text-lg"
+                        data-i18n="nav.skills"
+                        >Skills</a
+                    >
+                    <a
+                        href="#projects"
+                        class="block text-slate-600 dark:text-slate-300 font-medium text-lg"
+                        data-i18n="nav.projects"
+                        >Projects</a
+                    >
+
+                    <hr class="border-slate-200 dark:border-slate-700 my-2" />
+
+                    <div class="flex justify-between items-center pt-2">
+                        <span
+                            class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                            >Language</span
+                        >
+
+                        <button
+                            onclick="toggleLanguage()"
+                            class="relative justify-between flex items-center gap-2 w-14 min-h-7 bg-slate-200 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300 focus:outline-none shadow-inner"
+                        >
+                            <span class="text-xs font-bold text-slate-400"
+                                >EN</span
+                            >
+
+                            <span class="text-xs font-bold text-slate-400"
+                                >ID</span
+                            >
+                            <div
+                                id="lang-thumb-mobile"
+                                class="absolute top-1 left-1 w-5 h-5 bg-indigo-600 rounded-full shadow-md transform transition-transform duration-300 translate-x-0"
+                            ></div>
+                        </button>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <span
+                            class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                            >Appearance</span
+                        >
+                        <button
+                            onclick="toggleTheme()"
+                            class="relative w-14 h-7 bg-slate-200 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300 focus:outline-none flex items-center justify-between px-1.5 shadow-inner"
+                        >
+                            <i
+                                class="fas fa-sun text-[10px] text-yellow-500"
+                            ></i>
+                            <i
+                                class="fas fa-moon text-[10px] text-indigo-300"
+                            ></i>
+                            <div
+                                id="theme-thumb-mobile"
+                                class="absolute top-1 left-1 w-5 h-5 bg-white dark:bg-slate-800 rounded-full shadow-md transform transition-transform duration-300 translate-x-0 dark:translate-x-7 z-10"
+                            ></div>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+        </nav>
+
+        <section
+            id="home"
+            class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden"
+        >
+            <div
+                class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none"
+            >
+                <div
+                    class="absolute -top-[20%] -left-[10%] w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-600/20 rounded-full blur-[100px]"
+                ></div>
+                <div
+                    class="absolute top-[40%] -right-[10%] w-[400px] h-[400px] bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-[100px]"
+                ></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <div class="mb-8 relative inline-block">
+                    <div
+                        class="h-32 w-32 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 p-1 mx-auto shadow-xl"
+                    >
+                        <div
+                            class="h-full w-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center overflow-hidden"
+                        >
+                            <i
+                                class="fas fa-user-astronaut text-4xl text-indigo-500 dark:text-indigo-400"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+
+                <h2
+                    class="text-indigo-600 dark:text-indigo-400 font-bold tracking-wide uppercase text-sm mb-4"
+                    data-i18n="hero.role"
+                >
+                    Software Engineer
+                </h2>
+                <h1
+                    class="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight"
+                >
+                    Arief Zainuri
+                </h1>
+                <p
+                    class="mt-4 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-400 leading-relaxed"
+                    data-i18n="hero.bio"
+                >
+                    Seeking a position at a medium-to-large company where I can
+                    learn various tech stacks to improve my skills.
+                </p>
+
+                <div class="mt-10 flex justify-center gap-4">
+                    <a
+                        href="#"
+                        class="px-8 py-3 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/30"
+                    >
+                        <i class="fas fa-download mr-2"></i>
+                        <span data-i18n="hero.cv">Download CV</span>
+                    </a>
+                    <a
+                        href="#projects"
+                        class="px-8 py-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-white font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
+                    >
+                        <span data-i18n="hero.work">View Work</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section
+            id="skills"
+            class="py-20 bg-slate-50 dark:bg-slate-850/50 transition-colors duration-300"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl font-bold text-slate-900 dark:text-white mb-4"
+                        data-i18n="skills.title"
+                    >
+                        Technical Skills
+                    </h2>
+                    <div class="w-16 h-1 bg-indigo-500 mx-auto rounded"></div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    <!-- languages -->
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 fade-in"
+                    >
+                        <div
+                            class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400"
+                        >
+                            <i class="fas fa-code text-2xl"></i>
+                            <h3
+                                class="text-xl font-bold text-slate-900 dark:text-white"
+                                data-i18n="skills.lang"
+                            >
+                                Languages
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Kotlin</span
+                            ><span class="skill-tag">Swift</span
+                            ><span class="skill-tag">Dart</span>
+                            <span class="skill-tag">Java</span
+                            ><span class="skill-tag">C#</span
+                            ><span class="skill-tag">TypeScript</span>
+                        </div>
+                    </div>
+
+                    <!-- mobile -->
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 fade-in"
+                    >
+                        <div
+                            class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400"
+                        >
+                            <i class="fas fa-mobile-alt text-2xl"></i>
+                            <h3
+                                class="text-xl font-bold text-slate-900 dark:text-white"
+                            >
+                                Mobile
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Flutter</span
+                            ><span class="skill-tag">Android Native</span>
+                            <span class="skill-tag">React Native</span
+                            ><span class="skill-tag">SwiftUI</span>
+                        </div>
+                    </div>
+
+                    <!-- backend -->
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 fade-in"
+                    >
+                        <div
+                            class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400"
+                        >
+                            <i class="fas fa-server text-2xl"></i>
+                            <h3
+                                class="text-xl font-bold text-slate-900 dark:text-white"
+                            >
+                                Backend
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Spring Boot</span
+                            ><span class="skill-tag">.NET</span>
+                            <span class="skill-tag">Microservices</span
+                            ><span class="skill-tag">gRPC</span>
+                        </div>
+                    </div>
+
+                    <!-- tools -->
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 fade-in"
+                    >
+                        <div
+                            class="flex items-center gap-3 mb-4 text-indigo-600 dark:text-indigo-400"
+                        >
+                            <i class="fas fa-tools text-2xl"></i>
+                            <h3
+                                class="text-xl font-bold text-slate-900 dark:text-white"
+                            >
+                                Tools & DB
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">PostgreSQL</span
+                            ><span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Supabase</span
+                            ><span class="skill-tag">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            id="projects"
+            class="py-20 relative bg-white dark:bg-slate-900 transition-colors duration-300"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2
+                        class="text-3xl font-bold text-slate-900 dark:text-white mb-6"
+                        data-i18n="projects.title"
+                    >
+                        Featured Projects
+                    </h2>
+
+                    <div
+                        class="inline-flex bg-slate-100 dark:bg-slate-800 p-1 rounded-full space-x-1 border border-slate-200 dark:border-slate-700"
+                    >
+                        <button
+                            onclick="filterProjects('all')"
+                            id="btn-all"
+                            class="filter-btn active px-6 py-2 rounded-full text-sm font-medium transition-all bg-indigo-600 text-white shadow-md"
+                        >
+                            All
+                        </button>
+                        <button
+                            onclick="filterProjects('mobile')"
+                            id="btn-mobile"
+                            class="filter-btn px-6 py-2 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all"
+                        >
+                            Mobile Apps
+                        </button>
+                        <button
+                            onclick="filterProjects('backend')"
+                            id="btn-backend"
+                            class="filter-btn px-6 py-2 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all"
+                        >
+                            Backend
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    id="project-grid"
+                ></div>
+            </div>
+        </section>
+
+        <section
+            id="contact"
+            class="py-20 bg-slate-50 dark:bg-slate-850 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+        >
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2
+                    class="text-3xl font-bold text-slate-900 dark:text-white mb-8"
+                    data-i18n="contact.title"
+                >
+                    Get In Touch
+                </h2>
+                <div
+                    class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12"
+                >
+                    <a
+                        href="mailto:flaminglassoo1996@gmail.com"
+                        class="contact-link flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    >
+                        <i class="fas fa-envelope text-xl"></i>
+                        <span>flaminglassoo1996@gmail.com</span>
+                    </a>
+                    <span
+                        class="contact-link flex items-center gap-3 text-slate-600 dark:text-slate-400"
+                    >
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                        <span>Bogor, Indonesia</span>
+                    </span>
+                    <a
+                        href="tel:+6285792810600"
+                        class="contact-link flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    >
+                        <i class="fas fa-phone text-xl"></i>
+                        <span>+6285792810600</span>
+                    </a>
+                </div>
+                <p class="text-slate-500 dark:text-slate-600 text-sm">
+                    © 2025 Arief Zainuri. All rights reserved.
+                </p>
+            </div>
+        </section>
+
+        <style>
+            .skill-tag {
+                background-color: #f1f5f9; /* slate-100 */
+                color: #475569; /* slate-600 */
+                padding: 0.5rem 0.75rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 500;
+            }
+            .dark .skill-tag {
+                background-color: #0f172a; /* slate-900 */
+                color: #cbd5e1; /* slate-300 */
+            }
+        </style>
+
+        <script>
+            // --- 1. TRANSLATION DATA ---
+            const translations = {
+                en: {
+                    'nav.home': 'Home',
+                    'nav.skills': 'Skills',
+                    'nav.projects': 'Projects',
+                    'nav.contact': 'Contact',
+                    'hero.role': 'Software Engineer',
+                    'hero.bio':
+                        'Seeking a position at a medium-to-large company where I can learn various tech stacks to improve my skills.',
+                    'hero.cv': 'Download CV',
+                    'hero.work': 'View Work',
+                    'skills.title': 'Technical Skills',
+                    'skills.lang': 'Languages',
+                    'projects.title': 'Featured Projects',
+                    'contact.title': 'Get In Touch',
+                    'btn.playstore': 'View on Play Store',
+                    'btn.download': 'Download App',
+                },
+                id: {
+                    'nav.home': 'Beranda',
+                    'nav.skills': 'Keahlian',
+                    'nav.projects': 'Proyek',
+                    'nav.contact': 'Kontak',
+                    'hero.role': 'Rekayasa Perangkat Lunak',
+                    'hero.bio':
+                        'Mencari posisi di perusahaan menengah hingga besar di mana saya dapat mempelajari berbagai teknologi untuk meningkatkan keterampilan saya.',
+                    'hero.cv': 'Unduh CV',
+                    'hero.work': 'Lihat Karya',
+                    'skills.title': 'Keahlian Teknis',
+                    'skills.lang': 'Bahasa Pemrograman',
+                    'projects.title': 'Proyek Unggulan',
+                    'contact.title': 'Hubungi Saya',
+                    'btn.playstore': 'Lihat di Play Store',
+                    'btn.download': 'Unduh Aplikasi',
+                },
+            };
+
+            // --- 2. PROJECT DATA ---
+            const projects = [
+                {
+                    title: 'Prosa HI',
+                    company: 'Prosa',
+                    date: 'Aug 25 - Nov 25',
+                    category: 'mobile',
+                    tech: ['Flutter', 'Riverpod', 'Firebase'],
+                    desc_en:
+                        'Developed Android apps to help women get information about pregnancy, track baby growth, and manage mental health.',
+                    desc_id:
+                        'Mengembangkan aplikasi Android untuk membantu wanita mendapatkan informasi kehamilan, memantau pertumbuhan bayi, dan kesehatan mental.',
+                    link: '#',
+                    hasLink: true,
+                },
+                {
+                    title: 'BPD DIY Digital Apps',
+                    company: 'RawLabs',
+                    date: 'Mar 25 - Nov 25',
+                    category: 'backend',
+                    tech: ['Spring Boot', 'Microservices', 'gRPC'],
+                    desc_en:
+                        'Developed a web server for Banking/FinTech-based apps handling payroll, money transfers, and file management.',
+                    desc_id:
+                        'Mengembangkan web server untuk aplikasi Perbankan/FinTech yang menangani penggajian, transfer uang, dan manajemen file.',
+                    hasLink: false,
+                },
+                {
+                    title: 'Lexa v4.0',
+                    company: 'Lamemba',
+                    date: 'Apr 25 - Aug 25',
+                    category: 'backend',
+                    tech: ['Java Spring', 'JPA', 'BNI API'],
+                    desc_en:
+                        'Microservice architecture for form data, S3 file uploads, and BNI payment gateway integration.',
+                    desc_id:
+                        'Arsitektur Microservice untuk data formulir, upload file S3, dan integrasi gateway pembayaran BNI.',
+                    hasLink: false,
+                },
+                {
+                    title: 'FitConnect',
+                    company: 'PT. CP Prima Tbk',
+                    date: 'Jan 25 - Jun 25',
+                    category: 'mobile',
+                    tech: ['React Native', 'Expo', 'Health Kit'],
+                    desc_en:
+                        'Health app syncing data from Google Fit and Health Kit to server using background jobs.',
+                    desc_id:
+                        'Aplikasi kesehatan yang menyinkronkan data dari Google Fit dan Health Kit ke server menggunakan background jobs.',
+                    hasLink: false,
+                },
+                {
+                    title: 'MyHalo Golf',
+                    company: 'Bale Lab (Telkomsel)',
+                    date: 'Jun 23 - Dec 24',
+                    category: 'mobile',
+                    tech: ['Flutter', 'GetX', 'Hive'],
+                    desc_en:
+                        "Mobile application for Telkomsel's Golf Tournament, designed for members and partners.",
+                    desc_id:
+                        'Aplikasi mobile untuk Turnamen Golf Telkomsel, dirancang untuk anggota dan mitra.',
+                    link: '#',
+                    hasLink: true,
+                },
+                {
+                    title: 'SIMKP',
+                    company: 'Bale Lab (PLN)',
+                    date: 'Jun 23 - Dec 24',
+                    category: 'mobile',
+                    tech: ['Flutter', 'Provider', 'Firebase'],
+                    desc_en:
+                        'App for PLN employees to manage targets, assessments, and other critical tasks.',
+                    desc_id:
+                        'Aplikasi untuk karyawan PLN guna mengelola target, penilaian, dan tugas penting lainnya.',
+                    link: '#',
+                    hasLink: true,
+                },
+                {
+                    title: 'GetHired',
+                    company: 'Skyshi Digital',
+                    date: 'Nov 22 - Dec 23',
+                    category: 'mobile',
+                    tech: ['Flutter', 'GetX', 'Firebase'],
+                    desc_en:
+                        'CV generator app enabling users to download CVs with various pre-made templates.',
+                    desc_id:
+                        'Aplikasi pembuat CV yang memungkinkan pengguna mengunduh CV dengan berbagai template siap pakai.',
+                    link: '#',
+                    hasLink: true,
+                },
+                {
+                    title: 'Valbury',
+                    company: 'PT. Valbury Asia',
+                    date: 'May 22 - Jul 22',
+                    category: 'mobile',
+                    tech: ['Flutter', 'GetX', 'Figma'],
+                    desc_en:
+                        'Maintenance and UI optimization for core financial and investment applications.',
+                    desc_id:
+                        'Pemeliharaan dan optimalisasi UI untuk aplikasi inti keuangan dan investasi.',
+                    hasLink: false,
+                },
+                {
+                    title: 'Skor.id',
+                    company: 'Dihardja',
+                    date: 'Jun 19 - Present',
+                    category: 'mobile',
+                    tech: ['Flutter', 'OneSignal', 'Agora.io'],
+                    desc_en:
+                        'Comprehensive news portal app and dashboard for tournaments with real-time updates.',
+                    desc_id:
+                        'Aplikasi portal berita komprehensif dan dashboard turnamen dengan pembaruan real-time.',
+                    link: '#',
+                    hasLink: true,
+                },
+                {
+                    title: 'Pet Lover Centre',
+                    company: 'Dihardja',
+                    date: 'Jun 19 - Present',
+                    category: 'mobile',
+                    tech: ['Android Native', 'Kotlin', 'Firebase'],
+                    desc_en:
+                        'VIP activity tracking app for customers, including promos and discounts info.',
+                    desc_id:
+                        'Aplikasi pelacakan aktivitas VIP untuk pelanggan, termasuk info promo dan diskon.',
+                    hasLink: false,
+                },
+            ];
+
+            // --- 3. STATE MANAGEMENT ---
+            let currentLang = 'en';
+            let currentFilter = 'all';
+
+            // --- 4. INITIALIZATION ---
+            function init() {
+                // A. Dark Mode Init
+                if (
+                    localStorage.theme === 'dark' ||
+                    (!('theme' in localStorage) &&
+                        window.matchMedia('(prefers-color-scheme: dark)')
+                            .matches)
+                ) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+
+                // B. Language Init (Auto-detect)
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang.toLowerCase().startsWith('id')) {
+                    currentLang = 'id';
+                }
+
+                // C. UI Updates
+                updateLanguageUI();
+                updateSwitchUI();
+                renderProjects();
+            }
+
+            // --- 5. THEME LOGIC ---
+            function toggleTheme() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+                updateSwitchUI();
+            }
+
+            // --- 6. LANGUAGE LOGIC ---
+            function toggleLanguage() {
+                currentLang = currentLang === 'en' ? 'id' : 'en';
+                updateLanguageUI();
+                updateSwitchUI();
+                renderProjects();
+            }
+
+            // --- 7. UI HELPER: Update Switch Positions ---
+            function updateSwitchUI() {
+                const isDark =
+                    document.documentElement.classList.contains('dark');
+                const isId = currentLang === 'id';
+
+                // Theme Thumbs
+                const themeTrans = isDark ? 'translate-x-7' : 'translate-x-0';
+                document.getElementById(
+                    'theme-thumb-desktop'
+                ).className = `absolute top-1 left-1 w-5 h-5 bg-white dark:bg-slate-800 rounded-full shadow-md transform transition-transform duration-300 z-10 flex items-center justify-center ${themeTrans}`;
+                document.getElementById(
+                    'theme-thumb-mobile'
+                ).className = `absolute top-1 left-1 w-5 h-5 bg-white dark:bg-slate-800 rounded-full shadow-md transform transition-transform duration-300 z-10 ${themeTrans}`;
+
+                // Lang Thumbs (Translate 1.5rem / 6 tailwind units approx 24px)
+                const langTrans = isId ? 'translate-x-7' : 'translate-x-0';
+                document.getElementById(
+                    'lang-thumb-desktop'
+                ).className = `absolute top-1 left-1 w-5 h-5 bg-indigo-600 rounded-full shadow-md transform transition-transform duration-300 ${langTrans}`;
+                document.getElementById(
+                    'lang-thumb-mobile'
+                ).className = `absolute top-1 left-1 w-5 h-5 bg-indigo-600 rounded-full shadow-md transform transition-transform duration-300 ${langTrans}`;
+            }
+
+            function updateLanguageUI() {
+                // Update Static Text
+                document.querySelectorAll('[data-i18n]').forEach((element) => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[currentLang][key]) {
+                        element.innerText = translations[currentLang][key];
+                    }
+                });
+            }
+
+            // --- 8. PROJECT RENDERING LOGIC ---
+            function filterProjects(category) {
+                currentFilter = category;
+
+                document.querySelectorAll('.filter-btn').forEach((btn) => {
+                    const isSelected = btn.id === `btn-${category}`;
+                    if (isSelected) {
+                        btn.className =
+                            'filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all bg-indigo-600 text-white shadow-md';
+                    } else {
+                        btn.className =
+                            'filter-btn px-6 py-2 rounded-full text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all';
+                    }
+                });
+
+                renderProjects();
+            }
+
+            function renderProjects() {
+                const grid = document.getElementById('project-grid');
+                grid.innerHTML = '';
+
+                const filtered = projects.filter(
+                    (p) =>
+                        currentFilter === 'all' || p.category === currentFilter
+                );
+
+                filtered.forEach((p) => {
+                    const description =
+                        currentLang === 'id' ? p.desc_id : p.desc_en;
+                    const btnText = translations[currentLang]['btn.playstore'];
+
+                    const card = document.createElement('div');
+                    card.className =
+                        'bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col fade-in';
+
+                    let linkHtml = '';
+                    if (p.hasLink) {
+                        linkHtml = `
+                    <div class="px-6 pb-6 mt-auto">
+                        <a href="${p.link}" class="block w-full text-center py-2 rounded-lg bg-indigo-50 text-indigo-600 dark:bg-slate-700 dark:text-indigo-400 font-semibold text-sm hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-colors">
+                            <i class="fab fa-google-play mr-2"></i> ${btnText}
+                        </a>
+                    </div>`;
+                    } else {
+                        linkHtml = '<div class="pb-6"></div>';
+                    }
+
+                    const tagsHtml = p.tech
+                        .map(
+                            (t) =>
+                                `<span class="skill-tag text-xs mr-2 mb-2 inline-block">${t}</span>`
+                        )
+                        .join('');
+
+                    card.innerHTML = `
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">${p.title}</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 font-medium">${p.company}</p>
+                            </div>
+                            <span class="text-xs text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">${p.date}</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                            ${description}
+                        </p>
+                        <div class="flex flex-wrap">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    ${linkHtml}
+                `;
+                    grid.appendChild(card);
+                });
+            }
+
+            // --- 9. TOGGLE MOBILE MENU ---
+            function toggleMobileMenu() {
+                const menu = document.getElementById('mobile-menu');
+                const icon = document.getElementById('mobile-menu-icon');
+
+                // Check if menu is currently closed (has max-h-0)
+                const isClosed = menu.classList.contains('max-h-0');
+
+                if (isClosed) {
+                    // OPEN MENU
+                    // 1. Remove closed state classes
+                    menu.classList.remove('max-h-0', 'opacity-0');
+                    // 2. Add open state classes
+                    menu.classList.add('max-h-screen', 'opacity-100');
+
+                    // ICON ANIMATION (Bars -> Times)
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times', 'rotate-90'); // Optional: rotate-90 adds a nice spin effect
+                } else {
+                    // CLOSE MENU
+                    // 1. Remove open state classes
+                    menu.classList.remove('max-h-screen', 'opacity-100');
+                    // 2. Add closed state classes
+                    menu.classList.add('max-h-0', 'opacity-0');
+
+                    // ICON ANIMATION (Times -> Bars)
+                    icon.classList.remove('fa-times', 'rotate-90');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            // Run Init
+            init();
+        </script>
+    </body>
+</html>
