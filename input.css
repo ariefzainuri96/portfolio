@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+/* Force the 'dark' variant to look for the ".dark" class 
+   instead of the system preference (@media prefers-color-scheme).
+*/
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* Define the custom color here */
+    --color-slate-850: #1e293b;
+}
