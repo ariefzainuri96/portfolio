@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "watch-css": "npx @tailwindcss/cli -i ./input.css -o ./output.css --watch",
+    "watch-css": "npx @tailwindcss/cli -i ./input.css -o ./output.css --watch --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
