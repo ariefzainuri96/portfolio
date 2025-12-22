@@ -365,7 +365,7 @@
                     <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="./assets/files/Arief Zainuri CV.pdf"
+                        href="./assets/files/NodeJS - Arief Zainuri CV.pdf"
                         class="px-8 py-3 font-semibold text-white transition-all bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-700 shadow-indigo-500/30"
                     >
                         <svg
@@ -787,7 +787,7 @@
                     'hero.cv': 'Unduh CV',
                     'hero.work': 'Lihat Karya',
                     'skills.title': 'Keahlian Teknis',
-                    'skills.lang': 'Bahasa Pemrograman',
+                    'skills.lang': 'Languages',
                     'projects.title': 'Proyek Unggulan',
                     'contact.title': 'Hubungi Saya',
                     'btn.playstore': 'Lihat di Play Store',
@@ -828,7 +828,14 @@
                     company: 'Lamemba',
                     date: 'Apr 25 - Aug 25',
                     category: 'backend',
-                    tech: ['Spring Boot', 'Microservices', 'gRPC', 'BNI API'],
+                    tech: [
+                        'Express',
+                        'Typescript',
+                        'S3 Compatible',
+                        'Microservices',
+                        'gRPC',
+                        'BNI API',
+                    ],
                     desc_en:
                         'Microservice architecture for form data, S3 file uploads, and BNI payment gateway integration.',
                     desc_id:
@@ -839,12 +846,15 @@
                     title: 'FitConnect',
                     company: 'PT. CP Prima Tbk',
                     date: 'Jan 25 - Jun 25',
-                    category: 'mobile',
+                    category: 'mobile & backend',
                     tech: [
+                        'Express',
                         'React Native',
+                        'Typescript',
                         'Expo',
-                        'Health Kit',
+                        'Firebase',
                         'Background Job',
+                        'Redis',
                     ],
                     desc_en:
                         'Health app syncing data from Google Fit and Health Kit to server using background jobs.',
@@ -1057,7 +1067,7 @@
 
                 const filtered = projects.filter(
                     (p) =>
-                        currentFilter === 'all' || p.category === currentFilter
+                        currentFilter === 'all' || p.category.includes(currentFilter)
                 );
 
                 filtered.forEach((p) => {
