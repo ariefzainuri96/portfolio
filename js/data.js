@@ -275,28 +275,6 @@ export const projects = [
         link: 'https://play.google.com/store/search?q=langaroo&c=apps&hl=id',
     },
     {
-        title: 'Skor.id',
-        company: 'Dihardja Software Solutions',
-        date: 'Jun 19 - Present',
-        category: 'mobile',
-        tech: ['Flutter', 'GetX', 'Firebase', 'Deep Link', 'Crashlytics', 'Analytics'],
-        desc_en:
-            'Developed a news portal and real-time tournament dashboard app.',
-        desc_id:
-            'Mengembangkan portal berita dan aplikasi dashboard turnamen real-time.',
-        details_en: [
-            'Developed a news portal and real-time tournament dashboard app to provide users with live updates.',
-            'Led the mobile development team, overseeing project progress and ensuring technical requirements were met.',
-            'Performed comprehensive code reviews on Pull Requests (PRs) to maintain code quality, consistency, and best practices across the team.',
-        ],
-        details_id: [
-            'Mengembangkan portal berita dan aplikasi dashboard turnamen real-time untuk memberikan pembaruan langsung kepada pengguna.',
-            'Memimpin tim pengembangan seluler, mengawasi kemajuan proyek dan memastikan persyaratan teknis terpenuhi.',
-            'Melakukan tinjauan kode komprehensif pada Pull Requests (PRs) untuk menjaga kualitas kode, konsistensi, dan praktik terbaik di seluruh tim.',
-        ],
-        hasLink: false,
-    },
-    {
         title: 'Altius',
         company: 'Dihardja Software Solutions',
         date: 'Jun 19 - Present',
